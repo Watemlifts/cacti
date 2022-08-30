@@ -52,7 +52,7 @@
             // If second argument is an array, return an object with value of storage for each item in this array
             ret = {};
             for (i in a0) {
-                if (a0.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(a0, i)) {
                     vi = a0[i];
                     try {
                         ret[vi] = JSON.parse(s.getItem(vi));
@@ -93,7 +93,7 @@
                 tmp = ret;
                 ret = {};
                 for (j in a[i]) {
-                    if (a[i].hasOwnProperty(j)) {
+                    if (Object.prototype.hasOwnProperty.call(a.i, j)) {
                         ret[a[i][j]] = tmp[a[i][j]];
                     }
                 }
@@ -112,7 +112,7 @@
         } else if (_isPlainObject(a0)) {
             // If first argument is an object, set values of storage for each property of this object
             for (i in a0) {
-                if (a0.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(a0, i)) {
                     vi = a0[i];
                     if (!_isPlainObject(vi) && !this.alwaysUseJson) {
                         s.setItem(i, vi);
@@ -165,7 +165,7 @@
         } else if (Array.isArray(a0)) {
             // If first argument is an array, remove values from storage for each item of this array
             for (i in a0) {
-                if (a0.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(a0, i)) {
                     s.removeItem(a0[i]);
                 }
             }
@@ -193,7 +193,7 @@
             // Else remove value normally
             if (Array.isArray(a[i])) {
                 for (j in a[i]) {
-                    if (a[i].hasOwnProperty(j)) {
+                    if (Object.prototype.hasOwnProperty.call(a.i, j)) {
                         delete tmp[a[i][j]];
                     }
                 }
@@ -209,14 +209,14 @@
     function _removeAll(reinit_ns) {
         var keys = _keys.call(this), i;
         for (i in keys) {
-            if (keys.hasOwnProperty(i)) {
+            if (Object.prototype.hasOwnProperty.call(keys, i)) {
                 _remove.call(this, keys[i]);
             }
         }
         // Reinitialize all namespace storages
         if (reinit_ns) {
             for (i in apis.namespaceStorages) {
-                if (apis.namespaceStorages.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(apis.namespaceStorages, i)) {
                     _createNamespace(i);
                 }
             }
@@ -246,7 +246,7 @@
                     v = {'totest': v};
                 }
                 for (i in v) {
-                    if (v.hasOwnProperty(i) && !(
+                    if (Object.prototype.hasOwnProperty.call(v, i) && !(
                             (_isPlainObject(v[i]) && _isEmptyObject(v[i])) ||
                             (Array.isArray(v[i]) && !v[i].length) ||
                             (typeof v[i] !== 'boolean' && !v[i])
@@ -284,7 +284,7 @@
                     v = {'totest': v};
                 }
                 for (i in v) {
-                    if (v.hasOwnProperty(i) && !(v[i] !== undefined && v[i] !== null)) {
+                    if (Object.prototype.hasOwnProperty.call(v, i) && !(v[i] !== undefined && v[i] !== null)) {
                         return false;
                     }
                 }
@@ -309,13 +309,13 @@
             // If storage is a cookie, use js-cookie to retrieve keys
             var cookies = Cookies.get();
             for (var key in cookies) {
-                if (cookies.hasOwnProperty(key) && key != '') {
+                if (Object.prototype.hasOwnProperty.call(cookies, key) && key != '') {
                     keys.push(key.replace(o._prefix, ''));
                 }
             }
         } else {
             for (var i in o) {
-                if (o.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(o, i)) {
                     keys.push(i);
                 }
             }
@@ -411,7 +411,7 @@
         for (; i < arguments.length; i++) {
             var attributes = arguments[i];
             for (var key in attributes) {
-                if (attributes.hasOwnProperty(key)) {
+                if (Object.prototype.hasOwnProperty.call(attributes, key)) {
                     result[key] = attributes[key];
                 }
             }
@@ -461,7 +461,7 @@
             // If first argument is an object and storage is a namespace storage, set values individually
             if (_isPlainObject(a0) && this._ns) {
                 for (var i in a0) {
-                    if (a0.hasOwnProperty(i)) {
+                    if (Object.prototype.hasOwnProperty.call(a0, i)) {
                         this._callMethod(_set, [i, a0[i]]);
                     }
                 }
@@ -548,7 +548,7 @@
             clear: function () {
                 var cookies = Cookies.get();
                 for (var key in cookies) {
-                    if (cookies.hasOwnProperty(key) && key != '') {
+                    if (Object.prototype.hasOwnProperty.call(cookies, key) && key != '') {
                         if (!this._prefix && key.indexOf(cookie_local_prefix) === -1 && key.indexOf(cookie_session_prefix) === -1 || this._prefix && key.indexOf(this._prefix) === 0) {
                             Cookies.remove(key);
                         }

@@ -105,7 +105,7 @@
 			}
 		}
 		// allow value to be an empty string too
-		if (typeof value !== 'undefined' && window.JSON && JSON.hasOwnProperty('stringify')) {
+		if (typeof value !== 'undefined' && window.JSON && Object.prototype.hasOwnProperty.call(JSON, 'stringify')) {
 			// add unique identifiers = url pathname > table ID/index on page > data
 			if (!values[url]) {
 				values[url] = {};
@@ -2078,7 +2078,7 @@
 					if ( validColumn && typeof cts === 'function' ) {
 						// custom OVERALL text sorter
 						return cts( x, y, true, column, table );
-					} else if ( validColumn && typeof cts === 'object' && cts.hasOwnProperty( column ) ) {
+					} else if ( validColumn && typeof cts === 'object' && Object.prototype.hasOwnProperty.call(cts, column) ) {
 						// custom text sorter for a SPECIFIC COLUMN
 						return cts[column]( x, y, true, column, table );
 					} else if ( ts.sortNatural ) {
@@ -2190,7 +2190,7 @@
 						// options += $( '<option>', option )[ 0 ].outerHTML;
 						options += '<option';
 						for ( val in option ) {
-							if ( option.hasOwnProperty( val ) && val !== 'text' ) {
+							if ( Object.prototype.hasOwnProperty.call(option, val) && val !== 'text' ) {
 								options += ' ' + val + '="' + option[ val ].replace( tsfRegex.quote, '&quot;' ) + '"';
 							}
 						}
@@ -3110,7 +3110,7 @@
 
 	function getStoredSortList(c) {
 		var stored = ts.storage( c.table, 'tablesorter-savesort' );
-		return (stored && stored.hasOwnProperty('sortList') && $.isArray(stored.sortList)) ? stored.sortList : [];
+		return (stored && Object.prototype.hasOwnProperty.call(stored, 'sortList') && $.isArray(stored.sortList)) ? stored.sortList : [];
 	}
 
 	function sortListChanged(c, sortList) {

@@ -126,7 +126,7 @@ function setFieldData(fields, fieldData) {
 	}
 
 	for (var fieldId in fields) {
-		if (!fields.hasOwnProperty(fieldId)) {
+		if (!Object.prototype.hasOwnProperty.call(fields, fieldId)) {
 			continue;
 		}
 
@@ -134,7 +134,7 @@ function setFieldData(fields, fieldData) {
 
 		if (field.type == "checkbox") {
 			for (var propName in fieldData) {
-				if (fieldData.hasOwnProperty(propName)) {
+				if (Object.prototype.hasOwnProperty.call(fieldData, propName)) {
 					propValue = fieldData[propName];
 					if (propValue !== undefined) {
 						element = $('#' + propName);
@@ -163,7 +163,7 @@ function getFieldData(fields, fieldData) {
 	}
 
 	for (var fieldId in fields) {
-		if (!fields.hasOwnProperty(fieldId)) {
+		if (!Object.prototype.hasOwnProperty.call(fields, fieldId)) {
 			continue;
 		}
 
@@ -272,7 +272,7 @@ function enableButton(buttonName) {
 function collapseHeadings(headingStates) {
 	for (var key in headingStates) {
 		// skip loop if the property is from prototype
-		if (!headingStates.hasOwnProperty(key)) continue;
+		if (!Object.prototype.hasOwnProperty.call(headingStates, key)) continue;
 
 		var enabled = headingStates[key];
 		var element = $('#' + key);
@@ -304,7 +304,7 @@ function collapseHeadings(headingStates) {
 function hideHeadings(headingStates) {
 	for (var key in headingStates) {
 		// skip loop if the property is from prototype
-		if (!headingStates.hasOwnProperty(key)) {
+		if (!Object.prototype.hasOwnProperty.call(headingStates, key)) {
 			continue;
 		}
 
@@ -555,7 +555,7 @@ function prepareInstallData(installStep, stepOnly) {
 		props = [ 'Step' , 'Eula' ];
 		for (i = 0; i < props.length; i++) {
 			propName = props[i];
-			if (installData.hasOwnProperty(propName)) {
+			if (Object.prototype.hasOwnProperty.call(installData, propName)) {
 				newData[propName] = installData[propName];
 			}
 		}
@@ -713,11 +713,11 @@ function performStep(installStep, suppressRefresh, forceReload) {
 				/* Focus on first error */
 				var errors = data.Errors;
 				for (var propIndex in errors) {
-					if (errors.hasOwnProperty(propIndex)) {
+					if (Object.prototype.hasOwnProperty.call(errors, propIndex)) {
 						propArray = errors[propIndex];
 						if (propArray) {
 							for (var propName in propArray) {
-								if (propArray.hasOwnProperty(propName)) {
+								if (Object.prototype.hasOwnProperty.call(propArray, propName)) {
 									propValue = propArray[propName];
 									element = $("#" + propName.replace(/\//g,'_').replace(/\./g,'_'));
 									if (element != null && element.length > 0) {

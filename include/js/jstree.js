@@ -694,7 +694,7 @@
 
 			var kb = this.settings.core.keyboard, i, tmp;
 			for (i in kb) {
-				if (kb.hasOwnProperty(i)) {
+				if (Object.prototype.hasOwnProperty.call(kb, i)) {
 					tmp = i;
 					if (tmp !== '-' && tmp !== '+') {
 						tmp = tmp.replace('--', '-MINUS').replace('+-', '-MINUS').replace('++', '-PLUS').replace('-+', '-PLUS');
@@ -1654,7 +1654,7 @@
 									original	: false
 								};
 							for(i in df) {
-								if(df.hasOwnProperty(i)) {
+								if(Object.prototype.hasOwnProperty.call(df, i)) {
 									tmp.state[i] = df[i];
 								}
 							}
@@ -1668,7 +1668,7 @@
 								tmp.data = d.data;
 								if(d.data.jstree) {
 									for(i in d.data.jstree) {
-										if(d.data.jstree.hasOwnProperty(i)) {
+										if(Object.prototype.hasOwnProperty.call(d.data.jstree, i)) {
 											tmp.state[i] = d.data.jstree[i];
 										}
 									}
@@ -1676,14 +1676,14 @@
 							}
 							if(d && typeof d.state === 'object') {
 								for (i in d.state) {
-									if(d.state.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.state, i)) {
 										tmp.state[i] = d.state[i];
 									}
 								}
 							}
 							if(d && typeof d.li_attr === 'object') {
 								for (i in d.li_attr) {
-									if(d.li_attr.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.li_attr, i)) {
 										tmp.li_attr[i] = d.li_attr[i];
 									}
 								}
@@ -1693,7 +1693,7 @@
 							}
 							if(d && typeof d.a_attr === 'object') {
 								for (i in d.a_attr) {
-									if(d.a_attr.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.a_attr, i)) {
 										tmp.a_attr[i] = d.a_attr[i];
 									}
 								}
@@ -1744,7 +1744,7 @@
 								original	: false
 							};
 							for(i in df) {
-								if(df.hasOwnProperty(i)) {
+								if(Object.prototype.hasOwnProperty.call(df, i)) {
 									tmp.state[i] = df[i];
 								}
 							}
@@ -1760,7 +1760,7 @@
 								tmp.data = d.data;
 								if(d.data.jstree) {
 									for(i in d.data.jstree) {
-										if(d.data.jstree.hasOwnProperty(i)) {
+										if(Object.prototype.hasOwnProperty.call(d.data.jstree, i)) {
 											tmp.state[i] = d.data.jstree[i];
 										}
 									}
@@ -1768,14 +1768,14 @@
 							}
 							if(d && typeof d.state === 'object') {
 								for (i in d.state) {
-									if(d.state.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.state, i)) {
 										tmp.state[i] = d.state[i];
 									}
 								}
 							}
 							if(d && typeof d.li_attr === 'object') {
 								for (i in d.li_attr) {
-									if(d.li_attr.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.li_attr, i)) {
 										tmp.li_attr[i] = d.li_attr[i];
 									}
 								}
@@ -1791,7 +1791,7 @@
 							}
 							if(d && typeof d.a_attr === 'object') {
 								for (i in d.a_attr) {
-									if(d.a_attr.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(d.a_attr, i)) {
 										tmp.a_attr[i] = d.a_attr[i];
 									}
 								}
@@ -1906,7 +1906,7 @@
 					this._cnt = rslt.cnt;
 					var i, m = this._model.data;
 					for (i in m) {
-						if (m.hasOwnProperty(i) && m[i].state && m[i].state.loading && rslt.mod[i]) {
+						if (Object.prototype.hasOwnProperty.call(m, i) && m[i].state && m[i].state.loading && rslt.mod[i]) {
 							rslt.mod[i].state.loading = true;
 						}
 					}
@@ -2076,7 +2076,7 @@
 			data.state.disabled = d.children('a').hasClass('jstree-disabled');
 			if(data.data && data.data.jstree) {
 				for(i in data.data.jstree) {
-					if(data.data.jstree.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(data.data.jstree, i)) {
 						data.state[i] = data.data.jstree[i];
 					}
 				}
@@ -2156,7 +2156,7 @@
 					original	: false
 				};
 			for(i in df) {
-				if(df.hasOwnProperty(i)) {
+				if(Object.prototype.hasOwnProperty.call(df, i)) {
 					tmp.state[i] = df[i];
 				}
 			}
@@ -2170,7 +2170,7 @@
 				tmp.data = d.data;
 				if(d.data.jstree) {
 					for(i in d.data.jstree) {
-						if(d.data.jstree.hasOwnProperty(i)) {
+						if(Object.prototype.hasOwnProperty.call(d.data.jstree, i)) {
 							tmp.state[i] = d.data.jstree[i];
 						}
 					}
@@ -2178,14 +2178,14 @@
 			}
 			if(d && typeof d.state === 'object') {
 				for (i in d.state) {
-					if(d.state.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.state, i)) {
 						tmp.state[i] = d.state[i];
 					}
 				}
 			}
 			if(d && typeof d.li_attr === 'object') {
 				for (i in d.li_attr) {
-					if(d.li_attr.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.li_attr, i)) {
 						tmp.li_attr[i] = d.li_attr[i];
 					}
 				}
@@ -2195,7 +2195,7 @@
 			}
 			if(d && typeof d.a_attr === 'object') {
 				for (i in d.a_attr) {
-					if(d.a_attr.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.a_attr, i)) {
 						tmp.a_attr[i] = d.a_attr[i];
 					}
 				}
@@ -2255,7 +2255,7 @@
 				original	: false
 			};
 			for(i in df) {
-				if(df.hasOwnProperty(i)) {
+				if(Object.prototype.hasOwnProperty.call(df, i)) {
 					tmp.state[i] = df[i];
 				}
 			}
@@ -2271,7 +2271,7 @@
 				tmp.data = d.data;
 				if(d.data.jstree) {
 					for(i in d.data.jstree) {
-						if(d.data.jstree.hasOwnProperty(i)) {
+						if(Object.prototype.hasOwnProperty.call(d.data.jstree, i)) {
 							tmp.state[i] = d.data.jstree[i];
 						}
 					}
@@ -2279,14 +2279,14 @@
 			}
 			if(d && typeof d.state === 'object') {
 				for (i in d.state) {
-					if(d.state.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.state, i)) {
 						tmp.state[i] = d.state[i];
 					}
 				}
 			}
 			if(d && typeof d.li_attr === 'object') {
 				for (i in d.li_attr) {
-					if(d.li_attr.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.li_attr, i)) {
 						tmp.li_attr[i] = d.li_attr[i];
 					}
 				}
@@ -2302,7 +2302,7 @@
 			}
 			if(d && typeof d.a_attr === 'object') {
 				for (i in d.a_attr) {
-					if(d.a_attr.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(d.a_attr, i)) {
 						tmp.a_attr[i] = d.a_attr[i];
 					}
 				}
@@ -2484,7 +2484,7 @@
 
 			c = 'jstree-node ';
 			for(i in obj.li_attr) {
-				if(obj.li_attr.hasOwnProperty(i)) {
+				if(Object.prototype.hasOwnProperty.call(obj.li_attr, i)) {
 					if(i === 'id') { continue; }
 					if(i !== 'class') {
 						node.setAttribute(i, obj.li_attr[i]);
@@ -2550,7 +2550,7 @@
 			node.className = c;
 			c = ( obj.state.selected ? ' jstree-clicked' : '') + ( obj.state.disabled ? ' jstree-disabled' : '');
 			for(j in obj.a_attr) {
-				if(obj.a_attr.hasOwnProperty(j)) {
+				if(Object.prototype.hasOwnProperty.call(obj.a_attr, j)) {
 					if(j === 'href' && obj.a_attr[j] === '#') { continue; }
 					if(j !== 'class') {
 						node.childNodes[1].setAttribute(j, obj.a_attr[j]);
@@ -3077,7 +3077,7 @@
 		hide_all : function (skip_redraw) {
 			var i, m = this._model.data, ids = [];
 			for(i in m) {
-				if(m.hasOwnProperty(i) && i !== $.jstree.root && !m[i].state.hidden) {
+				if(Object.prototype.hasOwnProperty.call(m, i) && i !== $.jstree.root && !m[i].state.hidden) {
 					m[i].state.hidden = true;
 					ids.push(i);
 				}
@@ -3103,7 +3103,7 @@
 		show_all : function (skip_redraw) {
 			var i, m = this._model.data, ids = [];
 			for(i in m) {
-				if(m.hasOwnProperty(i) && i !== $.jstree.root && m[i].state.hidden) {
+				if(Object.prototype.hasOwnProperty.call(m, i) && i !== $.jstree.root && m[i].state.hidden) {
 					m[i].state.hidden = false;
 					ids.push(i);
 				}
@@ -3433,7 +3433,7 @@
 			}
 			tmp = [];
 			for(i in obj) {
-				if(obj.hasOwnProperty(i)) {
+				if(Object.prototype.hasOwnProperty.call(obj, i)) {
 					tmp.push(i);
 				}
 			}
@@ -3566,7 +3566,7 @@
 						return false;
 					}
 					for(i in state) {
-						if(state.hasOwnProperty(i) && i !== "core" && $.inArray(i, this.settings.plugins) === -1) {
+						if(Object.prototype.hasOwnProperty.call(state, i) && i !== "core" && $.inArray(i, this.settings.plugins) === -1) {
 							delete state[i];
 						}
 					}
@@ -3793,7 +3793,7 @@
 			}
 			if(!options || !options.no_state) {
 				for(i in obj.state) {
-					if(obj.state.hasOwnProperty(i)) {
+					if(Object.prototype.hasOwnProperty.call(obj.state, i)) {
 						tmp.state[i] = obj.state[i];
 					}
 				}
@@ -5241,7 +5241,7 @@
 
 							cur = [];
 							for (i in sel) {
-								if (sel.hasOwnProperty(i)) {
+								if (Object.prototype.hasOwnProperty.call(sel, i)) {
 									cur.push(i);
 								}
 							}
@@ -5901,7 +5901,7 @@
 			}
 			tmp = [];
 			for(i in obj) {
-				if(obj.hasOwnProperty(i)) {
+				if(Object.prototype.hasOwnProperty.call(obj, i)) {
 					tmp.push(i);
 				}
 			}
@@ -7353,7 +7353,7 @@
 							var i, j;
 							if(data) {
 								for(i in data) {
-									if(data.hasOwnProperty(i)) {
+									if(Object.prototype.hasOwnProperty.call(data, i)) {
 										this._data.massload[i] = data[i];
 									}
 								}
@@ -7380,7 +7380,7 @@
 									var i, j;
 									if(data) {
 										for(i in data) {
-											if(data.hasOwnProperty(i)) {
+											if(Object.prototype.hasOwnProperty.call(data, i)) {
 												this._data.massload[i] = data[i];
 											}
 										}
@@ -8042,7 +8042,7 @@
 			var i, j;
 			if(options && options.types && options.types['default']) {
 				for(i in options.types) {
-					if(i !== "default" && i !== $.jstree.root && options.types.hasOwnProperty(i)) {
+					if(i !== "default" && i !== $.jstree.root && Object.prototype.hasOwnProperty.call(options.types, i)) {
 						for(j in options.types['default']) {
 							if(options.types['default'].hasOwnProperty(j) && options.types[i][j] === undefined) {
 								options.types[i][j] = options.types['default'][j];
@@ -8079,7 +8079,7 @@
 							}
 							if(t[c].li_attr !== undefined && typeof t[c].li_attr === 'object') {
 								for (k in t[c].li_attr) {
-									if (t[c].li_attr.hasOwnProperty(k)) {
+									if (Object.prototype.hasOwnProperty.call(t.c.li_attr, k)) {
 										if (k === 'id') {
 											continue;
 										}
@@ -8094,7 +8094,7 @@
 							}
 							if(t[c].a_attr !== undefined && typeof t[c].a_attr === 'object') {
 								for (k in t[c].a_attr) {
-									if (t[c].a_attr.hasOwnProperty(k)) {
+									if (Object.prototype.hasOwnProperty.call(t.c.a_attr, k)) {
 										if (k === 'id') {
 											continue;
 										}
@@ -8265,7 +8265,7 @@
 			// remove old type props
 			if(t[old_type] && t[old_type].li_attr !== undefined && typeof t[old_type].li_attr === 'object') {
 				for (k in t[old_type].li_attr) {
-					if (t[old_type].li_attr.hasOwnProperty(k)) {
+					if (Object.prototype.hasOwnProperty.call(t.old_type.li_attr, k)) {
 						if (k === 'id') {
 							continue;
 						}
@@ -8282,7 +8282,7 @@
 			}
 			if(t[old_type] && t[old_type].a_attr !== undefined && typeof t[old_type].a_attr === 'object') {
 				for (k in t[old_type].a_attr) {
-					if (t[old_type].a_attr.hasOwnProperty(k)) {
+					if (Object.prototype.hasOwnProperty.call(t.old_type.a_attr, k)) {
 						if (k === 'id') {
 							continue;
 						}
@@ -8307,7 +8307,7 @@
 			// add new props
 			if(t[type].li_attr !== undefined && typeof t[type].li_attr === 'object') {
 				for (k in t[type].li_attr) {
-					if (t[type].li_attr.hasOwnProperty(k)) {
+					if (Object.prototype.hasOwnProperty.call(t.type.li_attr, k)) {
 						if (k === 'id') {
 							continue;
 						}
@@ -8331,7 +8331,7 @@
 			}
 			if(t[type].a_attr !== undefined && typeof t[type].a_attr === 'object') {
 				for (k in t[type].a_attr) {
-					if (t[type].a_attr.hasOwnProperty(k)) {
+					if (Object.prototype.hasOwnProperty.call(t.type.a_attr, k)) {
 						if (k === 'id') {
 							continue;
 						}
@@ -8624,7 +8624,7 @@
 		proto.createdCallback = function () {
 			var c = { core : {}, plugins : [] }, i;
 			for(i in $.jstree.plugins) {
-				if($.jstree.plugins.hasOwnProperty(i) && this.attributes[i]) {
+				if(Object.prototype.hasOwnProperty.call($.jstree.plugins, i) && this.attributes[i]) {
 					c.plugins.push(i);
 					if(this.getAttribute(i) && JSON.parse(this.getAttribute(i))) {
 						c[i] = JSON.parse(this.getAttribute(i));

@@ -208,7 +208,7 @@
 				}
 			};
 			for (i in overrides) {
-				if (overrides.hasOwnProperty(i)) {
+				if (Object.prototype.hasOwnProperty.call(overrides, i)) {
 					fns[i] = opts[i] || this._defaults[i] || null;
 				}
 			}
@@ -1840,7 +1840,7 @@
 					max = value;
 				} else if (name === 'onSelect') {
 					onselect = value;
-				} else if (overrides.hasOwnProperty(name)) {
+				} else if (Object.prototype.hasOwnProperty.call(overrides, name)) {
 					if (typeof (value) === 'undefined') {
 						return overrides[name];
 					}
@@ -1858,13 +1858,13 @@
 					max = name.maxDateTime;
 				}
 				for (prop in overrides) {
-					if (overrides.hasOwnProperty(prop) && name[prop]) {
+					if (Object.prototype.hasOwnProperty.call(overrides, prop) && name[prop]) {
 						fns[prop] = name[prop];
 					}
 				}
 			}
 			for (prop in fns) {
-				if (fns.hasOwnProperty(prop)) {
+				if (Object.prototype.hasOwnProperty.call(fns, prop)) {
 					overrides[prop] = fns[prop];
 					if (!name_clone) { name_clone = $.extend({}, name); }
 					delete name_clone[prop];
@@ -1915,7 +1915,7 @@
 	var isEmptyObject = function (obj) {
 		var prop;
 		for (prop in obj) {
-			if (obj.hasOwnProperty(prop)) {
+			if (Object.prototype.hasOwnProperty.call(obj, prop)) {
 				return false;
 			}
 		}

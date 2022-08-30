@@ -1305,7 +1305,7 @@ function parseTypenames$1(typenames, types) {
   return typenames.trim().split(/^|\s+/).map(function(t) {
     var name = "", i = t.indexOf(".");
     if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
-    if (t && !types.hasOwnProperty(t)) throw new Error("unknown type: " + t);
+    if (t && !Object.prototype.hasOwnProperty.call(types, t)) throw new Error("unknown type: " + t);
     return {type: t, name: name};
   });
 }
@@ -1383,7 +1383,7 @@ var namespaces = {
 function namespace(name) {
   var prefix = name += "", i = prefix.indexOf(":");
   if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
-  return namespaces.hasOwnProperty(prefix) ? {space: namespaces[prefix], local: name} : name; // eslint-disable-line no-prototype-builtins
+  return Object.prototype.hasOwnProperty.call(namespaces, prefix) ? {space: namespaces[prefix], local: name} : name; // eslint-disable-line no-prototype-builtins
 }
 
 function creatorInherit(name) {
@@ -2813,7 +2813,7 @@ function color(format) {
       : (m = reRgbaPercent.exec(format)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) // rgb(100%, 0%, 0%, 1)
       : (m = reHslPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) // hsl(120, 50%, 50%)
       : (m = reHslaPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) // hsla(120, 50%, 50%, 1)
-      : named.hasOwnProperty(format) ? rgbn(named[format]) // eslint-disable-line no-prototype-builtins
+      : Object.prototype.hasOwnProperty.call(named, format) ? rgbn(named[format]) // eslint-disable-line no-prototype-builtins
       : format === "transparent" ? new Rgb(NaN, NaN, NaN, 0)
       : null;
 }
@@ -9236,7 +9236,7 @@ function haversin(x) {
 function noop$1() {}
 
 function streamGeometry(geometry, stream) {
-  if (geometry && streamGeometryType.hasOwnProperty(geometry.type)) {
+  if (geometry && Object.prototype.hasOwnProperty.call(streamGeometryType, )) {
     streamGeometryType[geometry.type](geometry, stream);
   }
 }
@@ -9298,7 +9298,7 @@ function streamPolygon(coordinates, stream) {
 }
 
 function geoStream(object, stream) {
-  if (object && streamObjectType.hasOwnProperty(object.type)) {
+  if (object && Object.prototype.hasOwnProperty.call(streamObjectType, )) {
     streamObjectType[object.type](object, stream);
   } else {
     streamGeometry(object, stream);
@@ -10820,7 +10820,7 @@ var containsGeometryType = {
 };
 
 function containsGeometry(geometry, point) {
-  return geometry && containsGeometryType.hasOwnProperty(geometry.type)
+  return geometry && Object.prototype.hasOwnProperty.call(containsGeometryType, )
       ? containsGeometryType[geometry.type](geometry, point)
       : false;
 }
@@ -10862,7 +10862,7 @@ function pointRadians(point) {
 }
 
 function contains$1(object, point) {
-  return (object && containsObjectType.hasOwnProperty(object.type)
+  return (object && Object.prototype.hasOwnProperty.call(containsObjectType, )
       ? containsObjectType[object.type]
       : containsGeometry)(object, point);
 }

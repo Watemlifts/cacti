@@ -117,7 +117,7 @@
 
       // If menu already opened, have to reset menu height since
       // addition of the filter input changes the header height calc.
-      if (!!this.instance._isOpen) {
+      if (this.instance._isOpen) {
          this.instance._setMenuHeight(true);
       }
 
@@ -262,7 +262,7 @@
       });
       this.cache = cache;
       this.$rows = this.instance.$checkboxes.find('li');
-      if (!!alsoRefresh) {
+      if (alsoRefresh) {
          this._handler();
       }
     },

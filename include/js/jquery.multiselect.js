@@ -108,10 +108,10 @@
    * @return {object} jquery object for element
    */
   function getjQueryFromElement(elem) {
-    if (!!elem.jquery) {
+    if (elem.jquery) {
       return elem;
     }
-    if (!!elem.nodeType) {
+    if (elem.nodeType) {
       return $(elem);
     }
 
@@ -155,11 +155,11 @@
             pixels = parseFloat(determineFontSize()) * value;
             break;
          case '%':
-            if ( !!$elem ) {
+            if ( $elem ) {
                if (typeof $elem === 'string' || !$elem.jquery) {
                   $elem = $($elem);
                }
-               pixels = ( !!isHeight ? $elem.parent().height() : $elem.parent().width() ) * (value / 100.0);
+               pixels = ( isHeight ? $elem.parent().height() : $elem.parent().width() ) * (value / 100.0);
             } // else returns -1 default value from above.
             break;
          default:
@@ -517,7 +517,7 @@
           });
 
           // Build the list section for this optgroup, complete w/ option inputs...
-          var $collapseButton = !!self.options.groupsCollapsable
+          var $collapseButton = self.options.groupsCollapsable
                                  ? $( document.createElement('button') )
                                     .attr({'title': self.linkInfo.collapse.title})
                                     .addClass('ui-state-default ui-corner-all ui-multiselect-collapser')
@@ -621,10 +621,10 @@
 
       if ($inputs.length === $options.length) {
          var inputValues = {};
-         $inputs.not(!!skipDisabled ? ':disabled' : '').each( function() {
+         $inputs.not(skipDisabled ? ':disabled' : '').each( function() {
             inputValues[this.value] = this;
          });
-         $options.not(!!skipDisabled ? ':disabled' : '').each( function() {
+         $options.not(skipDisabled ? ':disabled' : '').each( function() {
             if (this.value in inputValues) {
                inputValues[this.value].checked = this.selected;
             }
@@ -645,7 +645,7 @@
     * @param {boolean} isDefault true if value is default value for the button
     */
     update: function(isDefault) {
-      if (!!this.options.listbox) {
+      if (this.options.listbox) {
          return;
       }
       var options = this.options;
@@ -692,7 +692,7 @@
     _setButtonValue: function(value, isDefault) {
       this.$buttonlabel[this.htmlAllowedFor('button') ? 'html' : 'text'](value);
 
-      if (!!isDefault) {
+      if (isDefault) {
         this.$button[0].defaultValue = value;
       }
     },
@@ -1066,7 +1066,7 @@
         var target = event.target;
 
         if ( this._isOpen
-            && (!!this.$button ? target !== this.$button[0] && !$.contains(this.$button[0], target) : true)
+            && (this.$button ? target !== this.$button[0] && !$.contains(this.$button[0], target) : true)
             && target !== this.$menu[0] && !$.contains(this.$menu[0], target) ) {
           this.close();
         }
@@ -1122,7 +1122,7 @@
       }
 
       // Note that it is assumed that the button width was set prior.
-      var width = !!this.options.listbox ? this._selectWidth : (this._savedButtonWidth || this._getBCRWidth( this.$button ));
+      var width = this.options.listbox ? this._selectWidth : (this._savedButtonWidth || this._getBCRWidth( this.$button ));
 
       var menuWidth = this.options.menuWidth || '';
       if ( /\d/.test(menuWidth) ) {
@@ -1231,7 +1231,7 @@
       if (!elem || !!elem.jquery && !elem[0]) {
          return null;
       }
-      var domRect = !!elem.jquery ? elem[0].getBoundingClientRect() : elem.getBoundingClientRect();
+      var domRect = elem.jquery ? elem[0].getBoundingClientRect() : elem.getBoundingClientRect();
       return domRect.right - domRect.left;
     },
 
@@ -1245,7 +1245,7 @@
       if (!elem || !!elem.jquery && !elem[0]) {
          return null;
       }
-      return !!elem.jquery
+      return elem.jquery
                   ? this._getBCRWidth(elem[0]) - elem.outerWidth(false)
                   : this._getBCRWidth(elem) - $(elem).outerWidth(false);
     },
@@ -1426,7 +1426,7 @@
       this.position();
 
       // Do any specified open animation effect after positioning the menu.
-      if (!!effect) {
+      if (effect) {
          // Menu must be hidden for some effects (e.g. fade) to work.
          $menu.css('display', 'none');
          if (typeof effect == 'string') {
@@ -1471,7 +1471,7 @@
       var $button = this.$button;
 
       // hide the menu, maybe with a speed/effect combo
-      if (!!effect) {
+      if (effect) {
          if (typeof effect == 'string') {
             $menu.hide(effect, this.speed);
          } else if (typeof effect == 'object' && effect.constructor == Array) {

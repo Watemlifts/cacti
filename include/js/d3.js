@@ -2858,10 +2858,10 @@ define(Rgb, rgb, extend(Color, {
     return this;
   },
   displayable: function() {
-    return (-0.5 <= this.r && this.r < 255.5)
-        && (-0.5 <= this.g && this.g < 255.5)
-        && (-0.5 <= this.b && this.b < 255.5)
-        && (0 <= this.opacity && this.opacity <= 1);
+    return (this.r >= -0.5 && this.r < 255.5)
+        && (this.g >= -0.5 && this.g < 255.5)
+        && (this.b >= -0.5 && this.b < 255.5)
+        && (this.opacity >= 0 && this.opacity <= 1);
   },
   hex: rgb_formatHex, // Deprecated! Use color.formatHex.
   formatHex: rgb_formatHex,
@@ -2954,9 +2954,9 @@ define(Hsl, hsl$2, extend(Color, {
     );
   },
   displayable: function() {
-    return (0 <= this.s && this.s <= 1 || isNaN(this.s))
-        && (0 <= this.l && this.l <= 1)
-        && (0 <= this.opacity && this.opacity <= 1);
+    return (this.s >= 0 && this.s <= 1 || isNaN(this.s))
+        && (this.l >= 0 && this.l <= 1)
+        && (this.opacity >= 0 && this.opacity <= 1);
   },
   formatHsl: function() {
     var a = this.opacity; a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
@@ -3061,7 +3061,7 @@ function rgb2lrgb(x) {
 function hclConvert(o) {
   if (o instanceof Hcl) return new Hcl(o.h, o.c, o.l, o.opacity);
   if (!(o instanceof Lab)) o = labConvert(o);
-  if (o.a === 0 && o.b === 0) return new Hcl(NaN, 0 < o.l && o.l < 100 ? 0 : NaN, o.l, o.opacity);
+  if (o.a === 0 && o.b === 0) return new Hcl(NaN, o.l > 0 && o.l < 100 ? 0 : NaN, o.l, o.opacity);
   var h = Math.atan2(o.b, o.a) * degrees$2;
   return new Hcl(h < 0 ? h + 360 : h, Math.sqrt(o.a * o.a + o.b * o.b), o.l, o.opacity);
 }
@@ -9114,7 +9114,7 @@ function formatLocale$1(locale) {
         if (maybeSuffix) {
           i = -1, n = value.length;
           while (++i < n) {
-            if (c = value.charCodeAt(i), 48 > c || c > 57) {
+            if (c = value.charCodeAt(i), c < 48 || c > 57) {
               valueSuffix = (c === 46 ? decimal + value.slice(i + 1) : value.slice(i)) + valueSuffix;
               value = value.slice(0, i);
               break;
@@ -14021,7 +14021,7 @@ const inc = 0x3C6EF35F;
 const eps = 1 / 0x100000000;
 
 function lcg(seed = Math.random()) {
-  let state = (0 <= seed && seed < 1 ? seed / eps : Math.abs(seed)) | 0;
+  let state = (seed >= 0 && seed < 1 ? seed / eps : Math.abs(seed)) | 0;
   return () => (state = mul * state + inc | 0, eps * (state >>> 0));
 }
 
@@ -15187,7 +15187,7 @@ utcYear.every = function(k) {
 var utcYears = utcYear.range;
 
 function localDate(d) {
-  if (0 <= d.y && d.y < 100) {
+  if (d.y >= 0 && d.y < 100) {
     var date = new Date(-1, d.m, d.d, d.H, d.M, d.S, d.L);
     date.setFullYear(d.y);
     return date;
@@ -15196,7 +15196,7 @@ function localDate(d) {
 }
 
 function utcDate(d) {
-  if (0 <= d.y && d.y < 100) {
+  if (d.y >= 0 && d.y < 100) {
     var date = new Date(Date.UTC(-1, d.m, d.d, d.H, d.M, d.S, d.L));
     date.setUTCFullYear(d.y);
     return date;
@@ -18438,7 +18438,7 @@ Step.prototype = {
     this._point = 0;
   },
   lineEnd: function() {
-    if (0 < this._t && this._t < 1 && this._point === 2) this._context.lineTo(this._x, this._y);
+    if (this._t > 0 && this._t < 1 && this._point === 2) this._context.lineTo(this._x, this._y);
     if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath();
     if (this._line >= 0) this._t = 1 - this._t, this._line = 1 - this._line;
   },

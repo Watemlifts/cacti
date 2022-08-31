@@ -370,15 +370,15 @@ jQuery.tableDnD = {
     },
     moveVerticle: function (moving, currentRow) {
 
-        if (0 != moving.vertical
+        if (moving.vertical != 0
             // If we're over a row then move the dragged row to there so that the user sees the
             // effect dynamically
             && currentRow
             && this.dragObject != currentRow
             && this.dragObject.parentNode == currentRow.parentNode)
-            0 > moving.vertical
+            moving.vertical < 0
                 && this.dragObject.parentNode.insertBefore(this.dragObject, currentRow.nextSibling)
-            || 0 < moving.vertical
+            || moving.vertical > 0
                 && this.dragObject.parentNode.insertBefore(this.dragObject, currentRow);
 
     },
@@ -387,7 +387,7 @@ jQuery.tableDnD = {
             currentLevel;
 
         if (!config.hierarchyLevel
-            || 0 == moving.horizontal
+            || moving.horizontal == 0
             // We only care if moving left or right on the current row
             || !currentRow
             || this.dragObject != currentRow)
@@ -395,12 +395,12 @@ jQuery.tableDnD = {
 
             currentLevel = $(currentRow).data('level');
 
-            0 < moving.horizontal
+            moving.horizontal > 0
                 && currentLevel > 0
                 && $(currentRow).find('td:first').children(':first').remove()
                 && $(currentRow).data('level', --currentLevel);
 
-            0 > moving.horizontal
+            moving.horizontal < 0
                 && currentLevel < config.hierarchyLevel
                 && $(currentRow).prev().data('level') >= currentLevel
                 && $(currentRow).children(':first').prepend(config.indentArtifact)

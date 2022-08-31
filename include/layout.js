@@ -275,12 +275,12 @@ $.fn.classes = function(callback) {
 		var splitClassName = v.className.split(/\s+/);
 		for (var j in splitClassName) {
 			var className = splitClassName[j];
-			if (-1 === classes.indexOf(className)) {
+			if (classes.indexOf(className) === -1) {
 				classes.push(className);
 			}
 		}
 	});
-	if ('function' == typeof callback) {
+	if (typeof callback == 'function') {
 		for (var i in classes) {
 			callback(classes[i]);
 		}

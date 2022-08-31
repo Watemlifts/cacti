@@ -1317,7 +1317,7 @@ $.ui.focusable = function( element, hasTabindex ) {
 	var map, mapName, img, focusableIfVisible, fieldset,
 		nodeName = element.nodeName.toLowerCase();
 
-	if ( "area" === nodeName ) {
+	if ( nodeName === "area" ) {
 		map = element.parentNode;
 		mapName = map.name;
 		if ( !element.href || !mapName || map.nodeName.toLowerCase() !== "map" ) {
@@ -1341,7 +1341,7 @@ $.ui.focusable = function( element, hasTabindex ) {
 				focusableIfVisible = !fieldset.disabled;
 			}
 		}
-	} else if ( "a" === nodeName ) {
+	} else if ( nodeName === "a" ) {
 		focusableIfVisible = element.href || hasTabindex;
 	} else {
 		focusableIfVisible = hasTabindex;
@@ -1760,7 +1760,7 @@ var widgetsMouse = $.widget( "ui.mouse", {
 				return that._mouseDown( event );
 			} )
 			.on( "click." + this.widgetName, function( event ) {
-				if ( true === $.data( event.target, that.widgetName + ".preventClickEvent" ) ) {
+				if ( $.data( event.target, that.widgetName + ".preventClickEvent" ) === true ) {
 					$.removeData( event.target, that.widgetName + ".preventClickEvent" );
 					event.stopImmediatePropagation();
 					return false;
@@ -1822,7 +1822,7 @@ var widgetsMouse = $.widget( "ui.mouse", {
 		}
 
 		// Click event may never have fired (Gecko & Opera)
-		if ( true === $.data( event.target, this.widgetName + ".preventClickEvent" ) ) {
+		if ( $.data( event.target, this.widgetName + ".preventClickEvent" ) === true ) {
 			$.removeData( event.target, this.widgetName + ".preventClickEvent" );
 		}
 
@@ -8237,7 +8237,7 @@ $.widget( "ui.autocomplete", {
 				}
 
 				item = ui.item.data( "ui-autocomplete-item" );
-				if ( false !== this._trigger( "focus", event, { item: item } ) ) {
+				if ( this._trigger( "focus", event, { item: item } ) !== false ) {
 
 					// use value to match what will end up in the input, if it was a key event
 					if ( event.originalEvent && /^key/.test( event.originalEvent.type ) ) {
@@ -8270,7 +8270,7 @@ $.widget( "ui.autocomplete", {
 					} );
 				}
 
-				if ( false !== this._trigger( "select", event, { item: item } ) ) {
+				if ( this._trigger( "select", event, { item: item } ) !== false ) {
 					this._value( item.value );
 				}
 
@@ -16334,7 +16334,7 @@ function clamp( value, prop, allowEmpty ) {
 	}
 
 	// For now all property types without mod have min and max
-	return 0 > value ? 0 : type.max < value ? type.max : value;
+	return value < 0 ? 0 : type.max < value ? type.max : value;
 }
 
 function stringParse( string ) {

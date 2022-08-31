@@ -70,7 +70,7 @@
 
   result = function() {
     var args, key, obj;
-    obj = arguments[0], key = arguments[1], args = 3 <= arguments.length ? __slice.call(arguments, 2) : [];
+    obj = arguments[0], key = arguments[1], args = arguments.length >= 3 ? __slice.call(arguments, 2) : [];
     if (typeof obj[key] === 'function') {
       return obj[key].apply(obj, args);
     } else {
@@ -80,7 +80,7 @@
 
   extend = function() {
     var key, out, source, sources, val, _i, _len;
-    out = arguments[0], sources = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+    out = arguments[0], sources = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
     for (_i = 0, _len = sources.length; _i < _len; _i++) {
       source = sources[_i];
       if (source) {
@@ -181,7 +181,7 @@
 
     Evented.prototype.trigger = function() {
       var args, ctx, event, handler, i, once, _ref, _ref1, _results;
-      event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      event = arguments[0], args = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
       if ((_ref = this.bindings) != null ? _ref[event] : void 0) {
         i = 0;
         _results = [];
@@ -291,7 +291,7 @@
         key = _ref2[_j];
         el.children[0].style[key] = transform;
       }
-      if (!this.lastRenderedProgress || this.lastRenderedProgress | 0 !== this.progress | 0) {
+      if (!this.lastRenderedProgress || this.lastRenderedProgress | this.progress !== 0 | 0) {
         el.children[0].setAttribute('data-progress-text', "" + (this.progress | 0) + "%");
         if (this.progress >= 100) {
           progressStr = '99';
@@ -379,7 +379,7 @@
 
   Pace.ignore = function() {
     var args, fn, ret;
-    fn = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+    fn = arguments[0], args = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
     ignoreStack.unshift('ignore');
     ret = fn.apply(null, args);
     ignoreStack.shift();
@@ -388,7 +388,7 @@
 
   Pace.track = function() {
     var args, fn, ret;
-    fn = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+    fn = arguments[0], args = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
     ignoreStack.unshift('track');
     ret = fn.apply(null, args);
     ignoreStack.shift();
@@ -526,7 +526,7 @@
         if (type === 'socket') {
           stillActive = request.readyState < 2;
         } else {
-          stillActive = (0 < (_ref2 = request.readyState) && _ref2 < 4);
+          stillActive = ((_ref2 = request.readyState) > 0 && _ref2 < 4);
         }
         if (stillActive) {
           Pace.restart();

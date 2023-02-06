@@ -2091,7 +2091,7 @@
         original: false
       }; let i; let tmp; let tid
       for (i in this._model.default_state) {
-        if (this._model.default_state.hasOwnProperty(i)) {
+        if (Object.prototype.hasOwnProperty.call(this._model.default_state, i)) {
           data.state[i] = this._model.default_state[i]
         }
       }
@@ -3509,7 +3509,7 @@
         }
       }; let i
       for (i in this._model.data) {
-        if (this._model.data.hasOwnProperty(i)) {
+        if (Object.prototype.hasOwnProperty.call(this._model.data, i)) {
           if (i !== $.jstree.root) {
             if (this._model.data[i].state.loaded && this.settings.core.loaded_state) {
               state.core.loaded.push(i)
@@ -8028,7 +8028,7 @@
         for (i in options.types) {
           if (i !== 'default' && i !== $.jstree.root && Object.prototype.hasOwnProperty.call(options.types, i)) {
             for (j in options.types.default) {
-              if (options.types.default.hasOwnProperty(j) && options.types[i][j] === undefined) {
+              if (Object.prototype.hasOwnProperty.call(options.types.default, j) && options.types[i][j] === undefined) {
                 options.types[i][j] = options.types.default[j]
               }
             }
@@ -8596,7 +8596,7 @@
         }
       }
       for (i in $.jstree.defaults.core) {
-        if ($.jstree.defaults.core.hasOwnProperty(i) && this.attributes[i]) {
+        if (Object.prototype.hasOwnProperty.call($.jstree.defaults.core, i) && this.attributes[i]) {
           c.core[i] = JSON.parse(this.getAttribute(i)) || this.getAttribute(i)
         }
       }

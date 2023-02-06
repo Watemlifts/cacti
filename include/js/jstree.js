@@ -1697,7 +1697,7 @@
         const p = m[par]
         const sel = data.sel
         let tmp; let i; let j; let rslt
-        var parse_flat = function (d, p, ps) {
+        const parse_flat = function (d, p, ps) {
           if (!ps) { ps = [] } else { ps = ps.concat() }
           if (p) { ps.unshift(p) }
           const tid = d.id.toString()
@@ -1783,7 +1783,7 @@
           }
           return tmp.id
         }
-        var parse_nest = function (d, p, ps) {
+        const parse_nest = function (d, p, ps) {
           if (!ps) { ps = [] } else { ps = ps.concat() }
           if (p) { ps.unshift(p) }
           let tid = false; let i; let j; let c; let e; let tmp

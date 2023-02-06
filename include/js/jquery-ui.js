@@ -4944,7 +4944,7 @@
         offset.bottom = selectee.bottom + that.elementPos.top
 
         if (options.tolerance === 'touch') {
-          hit = ( !(offset.left > x2 || offset.right < x1 || offset.top > y2 ||
+          hit = (!(offset.left > x2 || offset.right < x1 || offset.top > y2 ||
                     offset.bottom < y1))
         } else if (options.tolerance === 'fit') {
           hit = (offset.left > x1 && offset.right < x2 && offset.top > y1 &&

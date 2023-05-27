@@ -2983,7 +2983,7 @@
       function generateResize () {
         let timeout
         const fn = []
-        var callResizeFn = function () {
+        const callResizeFn = function () {
           callResizeFn.clear(), timeout = generator_setTimeout(function () {
             fn.forEach(function (f) {
               return f()
@@ -7450,7 +7450,7 @@
         let keys
         let read
         const thisConfig = this.config
-        var find = function () {
+        const find = function () {
           const key = keys.shift()
           return key && target && isObjectType(target) && key in target ? (target = target[key], find()) : key ? undefined : target
         }

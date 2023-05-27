@@ -1612,7 +1612,7 @@
 
   /* MIT license */
 
-  var Color = function (obj) {
+  const Color = function (obj) {
     if (obj instanceof Color) {
       return obj
     }

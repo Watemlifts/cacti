@@ -1697,7 +1697,9 @@
         const p = m[par]
         const sel = data.sel
         let tmp; let i; let j; let rslt
-        var parse_flat = function (d, p, ps) {
+        a2c4ff0e
+        var parse_flat = function (d, p, ps)
+        const parse_flat = function (d, p, ps) {
           if (!ps) { ps = [] } else { ps = ps.concat() }
           if (p) { ps.unshift(p) }
           const tid = d.id.toString()
@@ -1783,7 +1785,9 @@
           }
           return tmp.id
         }
+          a2c4ff0e
         var parse_nest = function (d, p, ps) {
+        const parse_nest = function (d, p, ps) {
           if (!ps) { ps = [] } else { ps = ps.concat() }
           if (p) { ps.unshift(p) }
           let tid = false; let i; let j; let c; let e; let tmp
@@ -2091,7 +2095,10 @@
         original: false
       }; let i; let tmp; let tid
       for (i in this._model.default_state) {
+        a2c4ff0e
         if (this._model.default_state.hasOwnProperty(i)) {
+
+        if (Object.prototype.hasOwnProperty.call(this._model.default_state, i)) {
           data.state[i] = this._model.default_state[i]
         }
       }
@@ -3509,7 +3516,10 @@
         }
       }; let i
       for (i in this._model.data) {
+       a2c4ff0e
         if (this._model.data.hasOwnProperty(i)) {
+
+        if (Object.prototype.hasOwnProperty.call(this._model.data, i))
           if (i !== $.jstree.root) {
             if (this._model.data[i].state.loaded && this.settings.core.loaded_state) {
               state.core.loaded.push(i)
@@ -8028,7 +8038,9 @@
         for (i in options.types) {
           if (i !== 'default' && i !== $.jstree.root && Object.prototype.hasOwnProperty.call(options.types, i)) {
             for (j in options.types.default) {
+             a2c4ff0e
               if (options.types.default.hasOwnProperty(j) && options.types[i][j] === undefined) {
+              if (Object.prototype.hasOwnProperty.call(options.types.default, j) && options.types[i][j] === undefined) {
                 options.types[i][j] = options.types.default[j]
               }
             }
@@ -8596,7 +8608,9 @@
         }
       }
       for (i in $.jstree.defaults.core) {
+        a2c4ff0e
         if ($.jstree.defaults.core.hasOwnProperty(i) && this.attributes[i]) {
+        if (Object.prototype.hasOwnProperty.call($.jstree.defaults.core, i) && this.attributes[i]) {
           c.core[i] = JSON.parse(this.getAttribute(i)) || this.getAttribute(i)
         }
       }
